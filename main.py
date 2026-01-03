@@ -1,6 +1,6 @@
 import streamlit as st
 import plotly.express as px
-
+from plots import hour_of_day
 from data import load_data
 
 df = load_data()
@@ -9,9 +9,10 @@ st.header('US-Unfälle Datenanalyse')
 
 
 
-tab1, tab2 = st.tabs([
+tab1, tab2, tab3 = st.tabs([
     "Übersicht",
-    "Weitere Analysen"
+    "Wetter",
+    "Timing"
 ])
 
 with tab1:
@@ -57,3 +58,6 @@ with tab2:
     )
 
     st.plotly_chart(fig, use_container_width=True)
+
+with tab3:
+    hour_of_day(df)
